@@ -26,6 +26,24 @@ exports.get = function (name) {
 };
 
 /**
+ * 获取template的编译配置信息
+ *
+ * @public
+ * @param {string} name 模版名称
+ * @return {Object} 配置信息
+ */
+exports.getConfig = function (name) {
+    var res = {};
+    var file = path.resolve(DIR, name + '.json');
+
+    if (fs.existsSync(file)) {
+        res = JSON.parse(fs.readFileSync(file, 'utf-8'));
+    }
+
+    return res;
+};
+
+/**
  * 生成文件
  *
  * @public
@@ -36,7 +54,8 @@ exports.get = function (name) {
 exports.generate = function (name, output, data) {
     var etpl = require('etpl');
     var tpl = exports.get(name);
-    var render = etpl.compile(tpl);
+    var tplEngine = new etpl.Engine(exports.getConfig(name));
+    var render = tplEngine.compile(tpl);
     var file = render(data || {});
 
     fs.writeFileSync(output, file, 'utf-8');
