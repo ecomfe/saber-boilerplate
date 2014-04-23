@@ -16,7 +16,7 @@ var DIR = path.resolve(__dirname, 'scaffold');
  * @return {string}
  */
 exports.get = function (name) {
-    var file = path.resolve(DIR, name, '.tpl');
+    var file = path.resolve(DIR, name + '.tpl');
 
     if (!fs.existsSync(file)) {
         throw new Error('can not find scaffold file: ' + name);
@@ -30,14 +30,14 @@ exports.get = function (name) {
  *
  * @public
  * @param {string} name 模版名称
- * @param {Object} data 模版数据
  * @param {string} output 生成文件路径
+ * @param {Object=} data 模版数据
  */
-exports.generate = function (name, data, output) {
+exports.generate = function (name, output, data) {
     var etpl = require('etpl');
     var tpl = exports.get(name);
-    var render = etpl.complie(tpl);
-    var file = render(data);
+    var render = etpl.compile(tpl);
+    var file = render(data || {});
 
     fs.writeFileSync(output, file, 'utf-8');
 };

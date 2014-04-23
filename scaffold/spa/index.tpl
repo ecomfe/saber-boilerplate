@@ -6,29 +6,33 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title>${title}</title>
-    <!-- if: ${loaderUrl} -->
-    <script src="${loaderUrl}"></script>
+    <!-- if: ${loader.url} -->
+    <script src="${loader.url}"></script>
     <!-- /if -->
-    <!-- if: ${loaderConfig} -->
+    <!-- if: ${loader.config} -->
     <script>
     require.config({
-        baseUrl: '${loaderBaseUrl}',
+        <!-- if: ${loader.baseUrl} -->
+        baseUrl: '${loader.baseUrl}',
+        <!-- /if -->
         paths: {
-            <!-- for: ${loaderPaths} as ${path}, ${index} -->
-            ${path.perfix}: '${path.data}'<!-- if: ${loaderPaths.length} - 1 != ${index} -->,<!-- /if -->
+            <!-- for: ${loader.paths} as ${path}, ${index} -->
+            ${path.perfix}: '${path.data}'<!-- if: ${loader.paths.length} - 1 != ${index} -->,<!-- /if -->
             <!-- /for -->
         },
+
         packages: [
-            <!-- for: ${loaderPackages} as ${pkg}, ${index} -->
+            <!-- for: ${loader.packages} as ${pkg}, ${index} -->
             {
                 name: '${pkg.name}',
                 location: '${pkg.location}'<!-- if: ${pkg.main} -->,<!-- /if -->
                 <!-- if: ${pkg.main} -->
                 main: '${pkg.main}'
                 <!-- /if -->
-            }<!-- if: ${loaderPackages.length} - 1 != ${index} -->,<!-- /if -->
+            }<!-- if: ${loader.packages.length} - 1 != ${index} -->,<!-- /if -->
             <!-- /for -->
         ]
+
     });
     </script>
     <!-- /if -->

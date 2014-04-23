@@ -1,6 +1,6 @@
 /**
  * @file 路由配置
- * @author ${author}(${email})
+ * @author ${author.name}(${author.email})
  */
 
 define(function (require) {

@@ -1,6 +1,6 @@
 /**
  * @file ${name}
- * @author ${author}(${email})
+ * @author ${author.name}(${author.email})
  */
 
 define(function (require) {

@@ -1,6 +1,6 @@
 /**
  * @file app
- * @author ${author}(${email})
+ * @author ${author.name}(${author.email})
  */
 
 define(function (require) {
@@ -18,7 +18,11 @@ define(function (require) {
     // 加载路由配置
     firework.load(require('./config'));
 
-    // 启动应用
-    firework.start('viewport', config);
+    return {
+        init: function () {
+            // 启动应用
+            firework.start('viewport', config);
+        }
+    };
 
 });
