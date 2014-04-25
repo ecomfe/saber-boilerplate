@@ -1,1 +1,1 @@
-<!-- target:${name} -->
+<% if: ${name} %><!-- target:${name} --><% /if %>

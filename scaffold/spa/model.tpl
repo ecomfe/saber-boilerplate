@@ -9,8 +9,8 @@ define(function (require) {
 
     var config = {};
 
-    config.fetch = function () {
-        return Resolver.resolved({});
+    config.fetch = function (query) {
+        return Resolver.resolved(query);
     };
 
     return config;

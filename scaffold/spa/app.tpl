@@ -10,10 +10,14 @@ define(function (require) {
 
     // FIXME
     // Only For Debug
+    // 关闭Promise的异常捕获，方便调试
     Resolver.disableExceptionCapture();
 
     // saber-firework全局配置信息
-    var config = {};
+    var config = {
+            // 配置index文件名称
+            index: 'index'
+        };
 
     // 加载路由配置
     firework.load(require('./config'));

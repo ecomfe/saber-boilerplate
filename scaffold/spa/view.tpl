@@ -9,8 +9,6 @@ define(function (require) {
 
     config.template = require('${template}');
 
-    config.templateMainTarget = '${mainTarget}';
-
     return config;
 
 });
