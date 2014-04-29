@@ -1,0 +1,18 @@
+{
+  "name": "saber-boilerplate",
+  "version": "0.1.0",
+  "description": "saber 项目初始化模板",
+  "main": "index",
+  "contributors": [
+    {
+      "name": "treelite",
+      "email": "c.xinle@gmail.com"
+    }
+  ],
+  "license": "BSD",
+  "repository": "https://github.com/ecomfe/saber-boilerplate",
+  "bugs": "https://github.com/ecomfe/saber-boilerplate/issues",
+  "dependencies": {
+    "etpl": "^2.1.0-rc"
+  }
+}
