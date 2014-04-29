@@ -9,7 +9,17 @@ exports.getLocations = function () {
     return [
         { 
             location: /\/$/, 
-            handler: home( 'index.html' )
+            handler: [
+                home('index.html'),
+                livereload()
+            ]
+        },
+        {
+            location: '/index.html',
+            handler: [
+                file(),
+                livereload()
+            ]
         },
         { 
             location: /^\/redirect-local/, 
