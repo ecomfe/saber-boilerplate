@@ -13,7 +13,14 @@ exports.getProcessors = function () {
     var jsProcessor = new JsCompressor();
     var pathMapperProcessor = new PathMapper();
     var addCopyright = new AddCopyright();
-    var html2jsPorcessor = new Html2JsCompiler();
+    var html2jsPorcessor = new Html2JsCompiler({
+            extnames: 'tpl',
+            combine: true
+        });
+    var html2jsClearPorcessor = new Html2JsCompiler({
+            extnames: 'tpl',
+            clean: true
+        });
     var stylusProcessor = new StylusCompiler({
             stylus: epr.stylus,
             compileOptions: {
@@ -22,9 +29,9 @@ exports.getProcessors = function () {
         });
 
     return {
-        'default': [ stylusProcessor, html2jsPorcessor, moduleProcessor, pathMapperProcessor ],
+        'default': [ stylusProcessor, html2jsPorcessor, moduleProcessor, html2jsClearPorcessor, pathMapperProcessor ],
         'release': [
-            stylusProcessor, cssProcessor, html2jsPorcessor, moduleProcessor,
+            stylusProcessor, cssProcessor, html2jsPorcessor, moduleProcessor, html2jsClearPorcessor,
             jsProcessor, pathMapperProcessor, addCopyright
         ]
     };
