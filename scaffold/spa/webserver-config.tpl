@@ -18,7 +18,8 @@ exports.getLocations = function () {
             location: '/index.html',
             handler: [
                 file(),
-                livereload()
+                livereload(),
+                weinre( {port: 8889} )
             ]
         },
         { 
