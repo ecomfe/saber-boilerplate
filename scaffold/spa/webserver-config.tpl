@@ -7,8 +7,8 @@ exports.directoryIndexes = true;
 exports.documentRoot = __dirname;
 exports.getLocations = function () {
     return [
-        { 
-            location: /\/$/, 
+        {
+            location: /\/$/,
             handler: [
                 home('index.html'),
                 livereload()
@@ -22,24 +22,24 @@ exports.getLocations = function () {
                 weinre( {port: 8889} )
             ]
         },
-        { 
-            location: /^\/redirect-local/, 
-            handler: redirect('redirect-target', false) 
+        {
+            location: /^\/redirect-local/,
+            handler: redirect('redirect-target', false)
         },
-        { 
-            location: /^\/redirect-remote/, 
-            handler: redirect('http://www.baidu.com', false) 
+        {
+            location: /^\/redirect-remote/,
+            handler: redirect('http://www.baidu.com', false)
         },
-        { 
-            location: /^\/redirect-target/, 
-            handler: content('redirectd!') 
+        {
+            location: /^\/redirect-target/,
+            handler: content('redirectd!')
         },
-        { 
-            location: '/empty', 
-            handler: empty() 
+        {
+            location: '/empty',
+            handler: empty()
         },
-        { 
-            location: /\.css($|\?)/, 
+        {
+            location: /\.css($|\?)/,
             handler: [
                 autocss({
                     stylus: {
@@ -55,8 +55,8 @@ exports.getLocations = function () {
                 html2js()
             ]
         },
-        { 
-            location: /^.*$/, 
+        {
+            location: /^.*$/,
             handler: [
                 file(),
                 proxyNoneExists()
