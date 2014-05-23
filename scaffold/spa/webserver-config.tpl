@@ -11,6 +11,8 @@ exports.getLocations = function () {
             location: /\/$/,
             handler: [
                 home('index.html'),
+                // Weinre 用于 Android 4.4- 设备的调试，请在需要时开启
+                // weinre( {port: 8889} ),
                 livereload()
             ]
         },
@@ -18,8 +20,7 @@ exports.getLocations = function () {
             location: '/index.html',
             handler: [
                 file(),
-                livereload(),
-                weinre( {port: 8889} )
+                livereload()
             ]
         },
         {
