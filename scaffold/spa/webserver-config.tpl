@@ -7,10 +7,12 @@ exports.directoryIndexes = true;
 exports.documentRoot = __dirname;
 exports.getLocations = function () {
     return [
-        { 
-            location: /\/$/, 
+        {
+            location: /\/$/,
             handler: [
                 home('index.html'),
+                // Weinre 用于 Android 4.4- 设备的调试，请在需要时开启
+                // weinre( {port: 8889} ),
                 livereload()
             ]
         },
@@ -18,28 +20,27 @@ exports.getLocations = function () {
             location: '/index.html',
             handler: [
                 file(),
-                livereload(),
-                weinre( {port: 8889} )
+                livereload()
             ]
         },
-        { 
-            location: /^\/redirect-local/, 
-            handler: redirect('redirect-target', false) 
+        {
+            location: /^\/redirect-local/,
+            handler: redirect('redirect-target', false)
         },
-        { 
-            location: /^\/redirect-remote/, 
-            handler: redirect('http://www.baidu.com', false) 
+        {
+            location: /^\/redirect-remote/,
+            handler: redirect('http://www.baidu.com', false)
         },
-        { 
-            location: /^\/redirect-target/, 
-            handler: content('redirectd!') 
+        {
+            location: /^\/redirect-target/,
+            handler: content('redirectd!')
         },
-        { 
-            location: '/empty', 
-            handler: empty() 
+        {
+            location: '/empty',
+            handler: empty()
         },
-        { 
-            location: /\.css($|\?)/, 
+        {
+            location: /\.css($|\?)/,
             handler: [
                 autocss({
                     stylus: {
@@ -55,8 +56,8 @@ exports.getLocations = function () {
                 html2js()
             ]
         },
-        { 
-            location: /^.*$/, 
+        {
+            location: /^.*$/,
             handler: [
                 file(),
                 proxyNoneExists()
