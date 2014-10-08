@@ -1,4 +1,4 @@
-var epr = require( 'edp-provider-rider' );
+var epr = require('edp-provider-rider');
 var stylusPlugin = epr.plugin();
 
 exports.port = 8848;
@@ -12,7 +12,7 @@ exports.getLocations = function () {
             handler: [
                 home('index.html'),
                 // Weinre 用于 Android 4.4- 设备的调试，请在需要时开启
-                // weinre( {port: 8889} ),
+                // weinre({port: 8889}),
                 livereload()
             ]
         },
@@ -66,8 +66,8 @@ exports.getLocations = function () {
     ];
 };
 
-exports.injectResource = function ( res ) {
-    for ( var key in res ) {
+exports.injectResource = function (res) {
+    for (var key in res) {
         global[ key ] = res[ key ];
     }
 };

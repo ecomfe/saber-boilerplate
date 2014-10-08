@@ -1,10 +1,10 @@
-var epr = require( 'edp-provider-rider' );
+var epr = require('edp-provider-rider');
 
 exports.stylus = epr.stylus;
 exports.input = __dirname;
 
-var path = require( 'path' );
-exports.output = path.resolve( __dirname, 'output' );
+var path = require('path');
+exports.output = path.resolve(__dirname, 'output');
 
 var stylusPlugin = epr.plugin();
 exports.getProcessors = function () {
@@ -29,7 +29,7 @@ exports.getProcessors = function () {
         });
 
     return {
-        'default': [ stylusProcessor, html2jsPorcessor, moduleProcessor, html2jsClearPorcessor, pathMapperProcessor ],
+        'default': [stylusProcessor, html2jsPorcessor, moduleProcessor, html2jsClearPorcessor, pathMapperProcessor],
         'release': [
             stylusProcessor, cssProcessor, html2jsPorcessor, moduleProcessor, html2jsClearPorcessor,
             jsProcessor, pathMapperProcessor, addCopyright
@@ -65,8 +65,8 @@ exports.exclude = [
     '*.swp'
 ];
 
-exports.injectProcessor = function ( processors ) {
-    for ( var key in processors ) {
+exports.injectProcessor = function (processors) {
+    for (var key in processors) {
         global[ key ] = processors[ key ];
     }
 };

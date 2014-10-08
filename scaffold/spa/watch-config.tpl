@@ -34,7 +34,7 @@ exports.getTasks = function () {
 
 exports.getGroups = function () {
     return {
-        'default': [ 'livereload' ]
+        'default': ['livereload']
     };
 };
 
