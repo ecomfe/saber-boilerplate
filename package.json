@@ -19,10 +19,10 @@
       "email": "firede@firede.us"
     }
   ],
-  "license": "BSD",
+  "license": "MIT",
   "repository": "https://github.com/ecomfe/saber-boilerplate",
   "bugs": "https://github.com/ecomfe/saber-boilerplate/issues",
   "dependencies": {
-    "etpl": "^2.1.0-rc"
+    "etpl": "~3.0.0"
   }
 }
