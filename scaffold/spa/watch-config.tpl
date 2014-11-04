@@ -1,3 +1,8 @@
+/**
+ * @file watch配置
+ * @author edpx-mobile
+ */
+
 exports.baseDir = __dirname;
 
 var globalFilters = {
