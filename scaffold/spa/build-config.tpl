@@ -72,12 +72,7 @@ exports.getProcessors = function () {
     var jsProcessor = new JsCompressor();
     var pathMapperProcessor = new PathMapper();
     var html2jsPorcessor = new Html2JsCompiler({
-            extnames: 'tpl',
-            combine: true
-        });
-    var html2jsClearPorcessor = new Html2JsCompiler({
-            extnames: 'tpl',
-            clean: true
+            extnames: 'tpl'
         });
     var stylusProcessor = new StylusCompiler({
             stylus: epr.stylus,
@@ -92,7 +87,6 @@ exports.getProcessors = function () {
         cssProcessor,
         html2jsPorcessor,
         moduleProcessor,
-        html2jsClearPorcessor,
         jsProcessor,
         pathMapperProcessor
     ];
