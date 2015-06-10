@@ -53,10 +53,16 @@ exports.getConfig = function (name) {
  */
 exports.generate = function (name, output, data) {
     var etpl = require('etpl');
+    var mkdirp = require('mkdirp');
     var tpl = exports.get(name);
     var tplEngine = new etpl.Engine(exports.getConfig(name));
     var render = tplEngine.compile(tpl);
     var file = render(data || {});
+
+    var dir = path.dirname(output);
+    if (!fs.existsSync(dir)) {
+        mkdirp.sync(dir);
+    }
 
     fs.writeFileSync(output, file, 'utf-8');
 };
