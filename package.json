@@ -23,6 +23,7 @@
   "repository": "https://github.com/ecomfe/saber-boilerplate",
   "bugs": "https://github.com/ecomfe/saber-boilerplate/issues",
   "dependencies": {
-    "etpl": "~3.0.0"
+    "etpl": "~3.0.0",
+    "mkdirp": "^0.5.1"
   }
 }
