@@ -42,8 +42,6 @@ var options = {
 
     basePath: path.resolve(__dirname, 'lib'),
 
-    template: require('./lib/common/common.tpl'),
-
     templateData: {
         config: {
             root: config.root,
