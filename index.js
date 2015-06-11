@@ -26,7 +26,7 @@ exports.get = function (name) {
 };
 
 /**
- * 获取template的编译配置信息
+ * 获取配置信息
  *
  * @public
  * @param {string} name 模版名称

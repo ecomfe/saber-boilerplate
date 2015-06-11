@@ -1,0 +1,13 @@
+{
+    "npm": {
+        "devDependencies": {
+            "edp-provider-rider": "0.x"
+        }
+    },
+    "edp": {
+        "dependencies": {
+            "saber-firework": "",
+            "saber-ajax": ""
+        }
+    }
+}
