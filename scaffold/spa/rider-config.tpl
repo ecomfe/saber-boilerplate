@@ -16,8 +16,11 @@ epr.stylusPlugin = epr.plugin({
     resolveUrl: true,
 
     // 追加 stylus 配置，可在此处引入 stylus 插件
-    // @see: http://learnboost.github.io/stylus/docs/js.html#usefn
-    // use: function (style) {},
+    // @see: http://stylus-lang.com/docs/js.html#usefn
+    use: function (style) {
+        // 若引入 CSS 文件，內联文件内容
+        style.set('include css', true);
+    },
 
     // husl 插件，需要时启用
     // @see: http://www.boronine.com/husl/
@@ -27,7 +30,7 @@ epr.stylusPlugin = epr.plugin({
     // @see: https://github.com/postcss/autoprefixer-core#usage
     autoprefixer: [
         'Android >= 2.3',
-        'iOS >= 5',
+        'iOS >= 6',
         'ExplorerMobile >= 10'
     ]
 });
