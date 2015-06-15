@@ -8,7 +8,7 @@
             "saber-promise": ""
         },
         "devDependencies": {
-            "edp-provider-rider": "0.x",
+            "edp-provider-rider": "2.x",
             "rebas-transfer": "0.x"
         }
     },
