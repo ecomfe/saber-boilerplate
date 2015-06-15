@@ -88,6 +88,8 @@ exports.getProcessors = function () {
                 use: epr.stylusPlugin
             }
         });
+    var outputCleaner = new OutputCleaner();
+
     return [
         stylusProcessor,
         cssProcessor,
@@ -96,7 +98,8 @@ exports.getProcessors = function () {
         moduleProcessor,
         html2jsClearPorcessor,
         jsProcessor,
-        pathMapperProcessor
+        pathMapperProcessor,
+        outputCleaner
     ];
 };
 
