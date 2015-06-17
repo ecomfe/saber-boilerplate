@@ -1,4 +1,2 @@
-/**
- * @file ${name}
- * @author ${author.name}(${author.email})
- */
+// file: ${name}
+// author: ${author.name}(${author.email})
