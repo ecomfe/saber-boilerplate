@@ -1,7 +1,7 @@
 {
     "config": {
         "app": {
-            "port": "8000",
+            "port": 8000,
             "remote": "",
             "staticRoot": "/src",
             "root": ""
@@ -12,7 +12,7 @@
     },
     "config-dev": {
         "app": {
-            "port": "8000",
+            "port": 8000,
             "remote": "",
             "staticRoot": "/asset",
             "root": ""
@@ -23,7 +23,7 @@
     },
     "config-release": {
         "app": {
-            "port": "8000",
+            "port": 8000,
             "remote": "",
             "staticRoot": "/asset",
             "root": ""
