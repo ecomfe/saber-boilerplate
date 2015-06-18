@@ -4,7 +4,7 @@
             "rebas": "0.x",
             "saber-ajax": "2.x",
             "saber-lang": "2.x",
-            "saber-mm": "2.x",
+            "saber-mm": "1.x",
             "saber-promise": "2.x"
         },
         "devDependencies": {
