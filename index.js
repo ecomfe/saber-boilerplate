@@ -26,7 +26,7 @@ exports.get = function (name) {
 };
 
 /**
- * 获取template的编译配置信息
+ * 获取配置信息
  *
  * @public
  * @param {string} name 模版名称
@@ -53,10 +53,16 @@ exports.getConfig = function (name) {
  */
 exports.generate = function (name, output, data) {
     var etpl = require('etpl');
+    var mkdirp = require('mkdirp');
     var tpl = exports.get(name);
     var tplEngine = new etpl.Engine(exports.getConfig(name));
     var render = tplEngine.compile(tpl);
     var file = render(data || {});
+
+    var dir = path.dirname(output);
+    if (!fs.existsSync(dir)) {
+        mkdirp.sync(dir);
+    }
 
     fs.writeFileSync(output, file, 'utf-8');
 };

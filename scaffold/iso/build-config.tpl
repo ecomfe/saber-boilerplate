@@ -9,6 +9,9 @@ var path = require('path');
 // 引入 rider 支持
 var epr = require('./edp-rider-config');
 
+// 引入 rebas 支持
+var transfer = require('rebas-transfer');
+
 /**
  * 指定匹配版本的 stylus
  */
@@ -58,7 +61,11 @@ exports.exclude = [
     '.DS_Store',
     '*.tmp',
     '*.bak',
-    '*.swp'
+    '*.swp',
+    /^app.js$/,
+    /^index.html$/,
+    /^log\//,
+    /^config[\-a-zA-Z]*\//
 ];
 
 /**
@@ -72,6 +79,7 @@ exports.getProcessors = function () {
     var jsProcessor = new JsCompressor();
     var pathMapperProcessor = new PathMapper();
     var html2jsPorcessor = new Html2JsCompiler({
+            files: ['src/**/*.tpl'],
             extnames: 'tpl'
         });
     var stylusProcessor = new StylusCompiler({
@@ -86,7 +94,9 @@ exports.getProcessors = function () {
         stylusProcessor,
         cssProcessor,
         html2jsPorcessor,
+        transfer.builder(),
         moduleProcessor,
+        html2jsClearPorcessor,
         jsProcessor,
         pathMapperProcessor,
         outputCleaner
@@ -103,6 +113,6 @@ exports.pageEntries = 'html,htm,phtml,tpl,vm';
  */
 exports.injectProcessor = function (processors) {
     for (var key in processors) {
-        global[ key ] = processors[ key ];
+        global[key] = processors[key];
     }
 };

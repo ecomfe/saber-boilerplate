@@ -1,0 +1,22 @@
+{
+    "npm": {
+        "dependencies": {
+            "rebas": "0.x",
+            "saber-ajax": "2.x",
+            "saber-lang": "2.x",
+            "saber-mm": "1.x",
+            "saber-promise": "2.x"
+        },
+        "devDependencies": {
+            "edp-provider-rider": "2.x",
+            "rebas-transfer": "0.x"
+        }
+    },
+    "edp": {
+        "dependencies": {
+            "saber-firework": "2.x",
+            "saber-ajax": "2.x",
+            "saber-rainbow": "0.x"
+        }
+    }
+}

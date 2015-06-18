@@ -1,7 +1,7 @@
 {
   "name": "saber-boilerplate",
-  "version": "1.0.0",
-  "description": "saber 项目初始化模板",
+  "version": "1.6.0",
+  "description": "Fate 项目脚手架模板",
   "main": "index",
   "maintainers": [
     {
@@ -23,6 +23,7 @@
   "repository": "https://github.com/ecomfe/saber-boilerplate",
   "bugs": "https://github.com/ecomfe/saber-boilerplate/issues",
   "dependencies": {
-    "etpl": "~3.0.0"
+    "etpl": "~3.0.0",
+    "mkdirp": "^0.5.1"
   }
 }
