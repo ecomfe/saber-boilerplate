@@ -16,8 +16,8 @@
         isomorphic: true
     });
 
-    return function (config) {
-        app.boot(config);
+    return function (config, path) {
+        app.boot(config, path);
     };
 
 });
