@@ -32,8 +32,10 @@ app.after(function (req, res, next) {
     // TODO
     // 根据访客终端来判断是否启用SPA模式
     if (res.hasOwnProperty('routeIndex')) {
+        var route = routeInfo[res.routeIndex];
         res.templateData.isSPA = true;
-        res.templateData.presenter = routeInfo[res.routeIndex].action;
+        res.templateData.presenter = route.action;
+        res.templateData.routePath = route.path;
     }
     next();
 });

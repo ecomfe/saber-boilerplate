@@ -8,8 +8,8 @@
     <title>#{title}</title><% if: #{loader.url} %>
     <script src="#{loader.url}"></script><% /if %><% if: #{loader.config} %>
     <script>
-    require.config({<% if: #{loader.baseUrl} %>
-        baseUrl: '#{loader.baseUrl}',<% /if %>
+    require.config({
+        baseUrl: '${config.staticRoot}',
         paths: {<% for: #{loader.paths} as #{path}, #{index} %>
             #{path.perfix}: '#{path.data}'<% if: #{loader.paths.length} - 1 != #{index} %>,<% /if %><% /for %>
         },
@@ -36,7 +36,7 @@
         });
         <!-- else -->
         require(['boot', '${presenter}'], function (boot, presenter) {
-            boot(presenter);
+            boot(presenter, '${routePath}');
         });
         <!-- /if -->
     </script>
