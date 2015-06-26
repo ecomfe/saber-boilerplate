@@ -45,8 +45,6 @@ exports.reabs = {
     files: ['app.js', 'lib', 'node_modules'],
     // 主文件
     index: 'index.html',
-    // 路由配置文件
-    route: 'lib/config.js',
     // 配置文件夹
     configDir: 'config'
 };
@@ -89,7 +87,12 @@ exports.exclude = [
  */
 exports.getProcessors = function () {
     var cssProcessor = new CssCompressor();
-    var moduleProcessor = new ModuleCompiler(transfer.combine());
+    var moduleProcessor = new ModuleCompiler(
+        transfer.combine({
+            // 指定需要合并所有业务代码的入口模块
+            entries: ['app']
+        })
+    );
     var jsProcessor = new JsCompressor();
     var pathMapperProcessor = new PathMapper();
     var html2jsPorcessor = new Html2JsCompiler({
