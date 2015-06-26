@@ -3,7 +3,7 @@
         "app": {
             "port": 8000,
             "remote": "",
-            "staticRoot": "/src",
+            "staticRoot": "",
             "root": ""
         },
         "log": {
@@ -14,7 +14,7 @@
         "app": {
             "port": 8000,
             "remote": "",
-            "staticRoot": "/asset",
+            "staticRoot": "",
             "root": ""
         },
         "log": {
@@ -25,7 +25,7 @@
         "app": {
             "port": 8000,
             "remote": "",
-            "staticRoot": "/asset",
+            "staticRoot": "",
             "root": ""
         },
         "log": {
