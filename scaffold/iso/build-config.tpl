@@ -40,30 +40,23 @@ exports.exclude = [
     'tool',
     'doc',
     'test',
+    'output',
     'module.conf',
+    'package.json',
+    'README',
     'dep/packages.manifest',
-    'dep/*/*/test',
-    'dep/*/*/doc',
     'dep/*/*/demo',
-    'dep/*/*/tool',
     'dep/*/*/*.md',
-    'dep/*/*/package.json',
     'edp-*',
+    '.*',
     'node_modules',
-    '.edpproj',
-    '.svn',
-    '.git',
-    '.gitignore',
-    '.idea',
-    '.project',
     'Desktop.ini',
     'Thumbs.db',
-    '.DS_Store',
     '*.tmp',
     '*.bak',
     '*.swp',
+    '*.md5',
     /^app.js$/,
-    /^index.html$/,
     /^log\//,
     /^config[\-a-zA-Z]*\//
 ];
@@ -75,7 +68,7 @@ exports.exclude = [
  */
 exports.getProcessors = function () {
     var cssProcessor = new CssCompressor();
-    var moduleProcessor = new ModuleCompiler();
+    var moduleProcessor = new ModuleCompiler(transfer.combine);
     var jsProcessor = new JsCompressor();
     var pathMapperProcessor = new PathMapper();
     var html2jsPorcessor = new Html2JsCompiler({
@@ -96,7 +89,6 @@ exports.getProcessors = function () {
         html2jsPorcessor,
         transfer.builder(),
         moduleProcessor,
-        html2jsClearPorcessor,
         jsProcessor,
         pathMapperProcessor,
         outputCleaner
