@@ -3,6 +3,8 @@
  * @author edpx-mobile
  */
 
+/* globals home, livereload, html2js, autostylus, weinre, proxy, file, proxyNoneExists, markdown */
+
 // 引入 rider 支持
 var epr = require('./edp-rider-config');
 
@@ -76,6 +78,7 @@ exports.getLocations = function () {
     ];
 };
 
+/* eslint-disable guard-for-in */
 exports.injectResource = function (res) {
     for (var key in res) {
         global[key] = res[key];
