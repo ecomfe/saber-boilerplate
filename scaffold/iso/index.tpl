@@ -35,8 +35,10 @@
             app();
         });
         <!-- else -->
-        require(['boot', '${presenter}'], function (boot, presenter) {
-            boot(presenter, '${routePath}');
+        require(['boot'], function (boot) {
+            require(['${presenter}'], function (presenter) {
+                boot(presenter, '${routePath}');
+            });
         });
         <!-- /if -->
     </script>
