@@ -3,6 +3,8 @@
  * @author edpx-mobile
  */
 
+/* globals CssCompressor, ModuleCompiler, JsCompressor, PathMapper, Html2JsCompiler, StylusCompiler, OutputCleaner */
+
 var cwd = process.cwd();
 var path = require('path');
 
@@ -72,14 +74,14 @@ exports.getProcessors = function () {
     var jsProcessor = new JsCompressor();
     var pathMapperProcessor = new PathMapper();
     var html2jsPorcessor = new Html2JsCompiler({
-            extnames: 'tpl'
-        });
+        extnames: 'tpl'
+    });
     var stylusProcessor = new StylusCompiler({
-            stylus: epr.stylus,
-            compileOptions: {
-                use: epr.stylusPlugin
-            }
-        });
+        stylus: epr.stylus,
+        compileOptions: {
+            use: epr.stylusPlugin
+        }
+    });
     var outputCleaner = new OutputCleaner();
 
     return [
@@ -96,11 +98,7 @@ exports.getProcessors = function () {
 exports.moduleEntries = 'html,htm,phtml,tpl,vm,js';
 exports.pageEntries = 'html,htm,phtml,tpl,vm';
 
-/**
- * builder主模块注入processor构造器的方法
- *
- * @param {Object} processors
- */
+/* eslint-disable guard-for-in */
 exports.injectProcessor = function (processors) {
     for (var key in processors) {
         global[ key ] = processors[ key ];

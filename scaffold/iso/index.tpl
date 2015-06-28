@@ -9,7 +9,7 @@
     <script src="#{loader.url}"></script><% /if %><% if: #{loader.config} %>
     <script>
     require.config({
-        baseUrl: '${config.staticRoot}',
+        baseUrl: '${config.staticRoot}/src',
         paths: {<% for: #{loader.paths} as #{path}, #{index} %>
             #{path.perfix}: '#{path.data}'<% if: #{loader.paths.length} - 1 != #{index} %>,<% /if %><% /for %>
         },
@@ -35,8 +35,10 @@
             app();
         });
         <!-- else -->
-        require(['boot', '${presenter}'], function (boot, presenter) {
-            boot(presenter, '${routePath}');
+        require(['boot'], function (boot) {
+            require(['${presenter}'], function (presenter) {
+                boot(presenter, '${routePath}');
+            });
         });
         <!-- /if -->
     </script>

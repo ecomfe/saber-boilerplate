@@ -3,6 +3,8 @@
  * @author edpx-mobile
  */
 
+/* globals livereload */
+
 exports.baseDir = __dirname;
 
 var globalFilters = {
@@ -43,6 +45,7 @@ exports.getGroups = function () {
     };
 };
 
+/* eslint-disable guard-for-in */
 exports.injectPlugin = function (plugins) {
     for (var key in plugins) {
         global[key] = plugins[key];

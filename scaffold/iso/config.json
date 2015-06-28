@@ -1,9 +1,9 @@
 {
     "config": {
         "app": {
-            "port": "8000",
+            "port": 8000,
             "remote": "",
-            "staticRoot": "/src",
+            "staticRoot": "",
             "root": ""
         },
         "log": {
@@ -12,9 +12,9 @@
     },
     "config-dev": {
         "app": {
-            "port": "8000",
+            "port": 8000,
             "remote": "",
-            "staticRoot": "/asset",
+            "staticRoot": "",
             "root": ""
         },
         "log": {
@@ -23,9 +23,9 @@
     },
     "config-release": {
         "app": {
-            "port": "8000",
+            "port": 8000,
             "remote": "",
-            "staticRoot": "/asset",
+            "staticRoot": "",
             "root": ""
         },
         "log": {

@@ -3,6 +3,8 @@
  * @author edpx-mobile
  */
 
+/* globals CssCompressor, ModuleCompiler, JsCompressor, PathMapper, Html2JsCompiler, StylusCompiler, OutputCleaner */
+
 var cwd = process.cwd();
 var path = require('path');
 
@@ -29,7 +31,24 @@ exports.input = cwd;
  *
  * @type {string}
  */
-exports.output = path.resolve(cwd, 'output');
+exports.output = path.resolve(cwd, 'output', 'static');
+
+/**
+ * rebas 构建配置
+ *
+ * @type {Object}
+ */
+exports.reabs = {
+    // 输出的目录
+    output: 'output/node',
+    // 需要拷贝到输出目录的文件
+    files: ['app.js', 'lib', 'node_modules'],
+    // 主文件
+    index: 'index.html',
+    // 配置文件夹
+    configDir: 'config'
+};
+
 
 /**
  * 排除文件pattern列表
@@ -40,30 +59,23 @@ exports.exclude = [
     'tool',
     'doc',
     'test',
+    'output',
     'module.conf',
+    'package.json',
+    'README',
     'dep/packages.manifest',
-    'dep/*/*/test',
-    'dep/*/*/doc',
     'dep/*/*/demo',
-    'dep/*/*/tool',
     'dep/*/*/*.md',
-    'dep/*/*/package.json',
     'edp-*',
+    '.*',
     'node_modules',
-    '.edpproj',
-    '.svn',
-    '.git',
-    '.gitignore',
-    '.idea',
-    '.project',
     'Desktop.ini',
     'Thumbs.db',
-    '.DS_Store',
     '*.tmp',
     '*.bak',
     '*.swp',
+    '*.md5',
     /^app.js$/,
-    /^index.html$/,
     /^log\//,
     /^config[\-a-zA-Z]*\//
 ];
@@ -75,19 +87,24 @@ exports.exclude = [
  */
 exports.getProcessors = function () {
     var cssProcessor = new CssCompressor();
-    var moduleProcessor = new ModuleCompiler();
+    var moduleProcessor = new ModuleCompiler(
+        transfer.combine({
+            // 指定需要合并所有业务代码的入口模块
+            entries: ['app']
+        })
+    );
     var jsProcessor = new JsCompressor();
     var pathMapperProcessor = new PathMapper();
     var html2jsPorcessor = new Html2JsCompiler({
-            files: ['src/**/*.tpl'],
-            extnames: 'tpl'
-        });
+        files: ['src/**/*.tpl'],
+        extnames: 'tpl'
+    });
     var stylusProcessor = new StylusCompiler({
-            stylus: epr.stylus,
-            compileOptions: {
-                use: epr.stylusPlugin
-            }
-        });
+        stylus: epr.stylus,
+        compileOptions: {
+            use: epr.stylusPlugin
+        }
+    });
     var outputCleaner = new OutputCleaner();
 
     return [
@@ -96,7 +113,6 @@ exports.getProcessors = function () {
         html2jsPorcessor,
         transfer.builder(),
         moduleProcessor,
-        html2jsClearPorcessor,
         jsProcessor,
         pathMapperProcessor,
         outputCleaner
@@ -106,11 +122,7 @@ exports.getProcessors = function () {
 exports.moduleEntries = 'html,htm,phtml,tpl,vm,js';
 exports.pageEntries = 'html,htm,phtml,tpl,vm';
 
-/**
- * builder主模块注入processor构造器的方法
- *
- * @param {Object} processors
- */
+/* eslint-disable guard-for-in */
 exports.injectProcessor = function (processors) {
     for (var key in processors) {
         global[key] = processors[key];
