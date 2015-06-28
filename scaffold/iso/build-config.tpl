@@ -96,15 +96,15 @@ exports.getProcessors = function () {
     var jsProcessor = new JsCompressor();
     var pathMapperProcessor = new PathMapper();
     var html2jsPorcessor = new Html2JsCompiler({
-            files: ['src/**/*.tpl'],
-            extnames: 'tpl'
-        });
+        files: ['src/**/*.tpl'],
+        extnames: 'tpl'
+    });
     var stylusProcessor = new StylusCompiler({
-            stylus: epr.stylus,
-            compileOptions: {
-                use: epr.stylusPlugin
-            }
-        });
+        stylus: epr.stylus,
+        compileOptions: {
+            use: epr.stylusPlugin
+        }
+    });
     var outputCleaner = new OutputCleaner();
 
     return [
