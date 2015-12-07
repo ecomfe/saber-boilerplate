@@ -17,7 +17,7 @@ var globalFilters = {
 
 var commonFilters = {
     staticFiles: '*.(tpl|html|js|coffee|less|styl|css|xml)',
-    mediaFiles: '*.(gif|jpg|jpeg|png|swf|fla|mp3)'
+    mediaFiles: '*.(gif|jpg|jpeg|png|swf|fla|mp3|ttf|woff|woff2)'
 };
 
 exports.globalFilters = globalFilters;
@@ -27,7 +27,7 @@ exports.getTasks = function () {
         'livereload': {
             filters: [
                 commonFilters.staticFiles,
-                commonFilters.staticFiles
+                commonFilters.mediaFiles
             ],
             events: [
                 'addedFiles',
